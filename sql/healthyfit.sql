@@ -1,0 +1,32 @@
+-- HealthyFit · Base de datos (MySQL / MariaDB de XAMPP)
+-- Se puede ejecutar varias veces sin romper nada.
+
+CREATE DATABASE IF NOT EXISTS healthyfit CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE healthyfit;
+
+CREATE TABLE IF NOT EXISTS contactos (
+  id        INT AUTO_INCREMENT PRIMARY KEY,
+  fecha     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  nombre    VARCHAR(100) NOT NULL DEFAULT '',
+  correo    VARCHAR(150) NOT NULL,
+  telefono  VARCHAR(30)  NOT NULL DEFAULT '',
+  asunto    VARCHAR(60)  NOT NULL,
+  mensaje   TEXT NOT NULL,
+  ip        VARCHAR(45)  NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS suscriptores (
+  id        INT AUTO_INCREMENT PRIMARY KEY,
+  fecha     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  correo    VARCHAR(150) NOT NULL UNIQUE,
+  ip        VARCHAR(45)  NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS comentarios (
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  fecha       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  nombre      VARCHAR(80)  NOT NULL,
+  correo      VARCHAR(150) NOT NULL DEFAULT '',
+  comentario  TEXT NOT NULL,
+  ip          VARCHAR(45)  NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
